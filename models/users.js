@@ -16,6 +16,10 @@ const userSchema = new Schema({
     password:{
         type: String,
         required: true
+    },
+    isFarmer:{
+        type: Boolean,
+        default: false
     }
 },{ timestamps:true })
 

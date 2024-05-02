@@ -8,7 +8,7 @@ export default function Navbar() {
             <Link className="" href={'/'}>Home</Link>
         </div>
         <div className="flex gap-2">
-            <Link className="font-bold" href={'/signup'}>signup</Link>
+            <Link className="font-bold" href={'/usertype'}>signup</Link>
             <Link className="font-bold" href={'/login'}>login</Link>            
         </div>
     </nav>

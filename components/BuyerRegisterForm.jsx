@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react'
-import { useRouter } from 'next/navigation';
+import React, {useState } from 'react'
+import {useRouter } from 'next/navigation';
 
 export default function page() {
   const [name, setName] = useState('');
@@ -10,9 +10,11 @@ export default function page() {
   const [password, setPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
   const [error, setError] = useState('');
+  const isFarmer = false;
+
 
   const router = useRouter();
-
+    
   const handleSubmit = async (e) =>{
     e.preventDefault();
 
@@ -27,32 +29,18 @@ export default function page() {
     }
 
     try {
-      const resUserExist = await fetch('api/userExists',{
-        method:'POST',
-        headers:{
-          "Content-Type":"application/json"
+      const res = await fetch('api/users/register',{
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
         },
-        body: JSON.stringify({ email }),
-      })
-
-      const { user } = await resUserExist.json();
-
-      if(user){
-        setError("User already exists.");
-        return
-      }
-
-      const res = await fetch('api/register',{
-        method:'POST',
-        headers:{
-          "Content-Type":"application/json"
-        },
-          body: JSON.stringify({
-            name,
-            email,
-            mobile,
-            password
-          })
+        body: JSON.stringify({
+          name,
+          email,
+          mobile,
+          password,
+          isFarmer
+        })
       })
 
       if(res.ok){
@@ -69,6 +57,7 @@ export default function page() {
 
   return (
     <div className='w-1/4 bg-blue-300 p-2 absolute right-1/2 translate-x-1/2'>
+        <h1>{}</h1>
         <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
             <h1 className=''>Signup</h1>
             <input
