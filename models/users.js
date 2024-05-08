@@ -17,6 +17,14 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    state:{
+        type: String,
+        required: true
+    },
+    district:{
+        type: String,
+        required: true
+    },
     isFarmer:{
         type: Boolean,
         default: false

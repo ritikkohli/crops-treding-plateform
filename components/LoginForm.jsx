@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -32,7 +33,9 @@ export default function LoginForm() {
       if(res.ok){
         const form = e.target;
         form.reset();
-        router.push('/dashboard')
+        toast.success('Login successfull');
+        router.push('/dashboard');
+        router.refresh();
       }else{
         console.log('User login failed')
       }

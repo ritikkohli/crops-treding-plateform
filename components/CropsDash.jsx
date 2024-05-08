@@ -1,8 +1,6 @@
 'use client';
 
-import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
-import BidSubmitForm from './BidSubmitForm';
 import Link from 'next/link';
 
 
@@ -10,7 +8,6 @@ export default function CropsDash() {
     const [crop, setCrop] = useState([]);
 
     const getData = async (e) => {
-        // e.preventDefault();
 
         const res = await fetch('api/crops/getCrops');
         const {data} = await res.json();
@@ -28,7 +25,6 @@ export default function CropsDash() {
 
   return (
     <div>
-        <BidSubmitForm/>
         <h1>crops listing here . . .</h1>
         <div className='flex gap-4 mx-10 '>
             {
@@ -41,7 +37,7 @@ export default function CropsDash() {
                         <h1>{c.name} ({c.variety})</h1>
                         <p>{c.quantity} kg</p>
                         <p className='bg-yellow-400 px-1 w-min text-sm rounded-md font-bold'>{c.status}</p>
-                        <Link href={`/bidSubmit/${c._id}`} className='bg-green-600 rounded-md px-2 px-1 text-white font-bold text-lg'>bid now</Link>
+                        <Link href={`/bidsubmit/${c._id}`} className='bg-green-600 rounded-md px-2 px-1 text-white font-bold text-lg'>bid now</Link>
                     </div>
                 ))
             }

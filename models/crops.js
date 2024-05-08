@@ -18,11 +18,28 @@ const cropSchema = new Schema({
         type: Number,
         required: true
     },
+    msp: {
+        type: Number,
+        required: true
+    },
     farmer:{
         type: ObjectId,
         required: true,
         ref: "User"
-    }
+    },
+    bids: [
+        {
+            buyer: {
+                type: ObjectId,
+                required: true,
+                ref: 'User'
+            },
+            bid: {
+                type: Number,
+                required: true
+            }
+        }
+    ]
 },{ timestamps:true })
 
 const Crop = models.Crop || mongoose.model("Crop", cropSchema);

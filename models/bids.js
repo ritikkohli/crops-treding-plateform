@@ -4,7 +4,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const bidSchema = new Schema({
     buyer: {
         type: ObjectId,
-        required: true
+        required: true,
+        ref: 'User'
     },
     bid: {
         type: Number,
@@ -12,7 +13,8 @@ const bidSchema = new Schema({
     },
     crop: {
         type: ObjectId,
-        require: true
+        require: true,
+        ref: 'Crop'
     }
 
 },{ timestamps : true})

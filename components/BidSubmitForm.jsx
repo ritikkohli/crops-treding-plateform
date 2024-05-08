@@ -1,10 +1,15 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function BidSubmitForm(props) {
-  const [bid, setBid] = useState(2275);
-  console.log(props.crop)
+  const [bid, setBid] = useState(0);
+  const [crop, setCrop] = useState({});
+  const [msp,setMsp] = useState(0);
+
+  const router = useRouter();
 
   const increaseByHundred = (e) => {
     e.preventDefault();
@@ -18,18 +23,44 @@ export default function BidSubmitForm(props) {
 
   const decreaseByHundred = (e) => {
     e.preventDefault();
-    setBid(bid-100);
+    if(bid <= msp){
+      return
+    }else if(bid-100 <= msp){
+      setBid(msp);
+    }else{
+      setBid(bid-100);
+    }
   }
 
   const decreaseByTen = (e) => {
     e.preventDefault();
-    setBid(bid-10);
+    if(bid <= msp){
+      return
+    }else if(bid-10 <= msp){
+      setBid(msp);
+    }else{
+      setBid(bid-10);
+    }
+  }
+
+  const getData = async (e) => {
+
+    try {
+      const cropInfo = await fetch(`/api/crops/getCrops/${props.crop}`);
+      const {data} = await cropInfo.json();
+      console.log(data);
+      setCrop(data);
+      setBid(data.msp);
+      setMsp(data.msp);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/bid/addBid',{
+      const res = await fetch('/api/crops/bidSubmit',{
         method : 'POST',
         headers : {
             'Content-Type' : 'application/json'
@@ -42,27 +73,55 @@ export default function BidSubmitForm(props) {
       if(res.ok){
         const temp = await res.json();
         console.log(temp);
-    }else{
-        console.log('bid submission failed');
-    }
-
+        toast.success('bid submitted successfully');
+        router.push('/');
+        }else{
+          console.log('bid submission failed');
+      }
     } catch (error) {
       console.log(error)
     }
   }
 
+  useEffect(()=>{
+    getData();
+  },[])
+
   return (
-    <div>
-        <h1>BidSubmitForm</h1>
-        <h1>MSP : 2275</h1>
-        <form className='flex flex-col gap-4 bg-green-200' onSubmit={handleSubmit}>
-          <h1>{bid}</h1>
-          <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={increaseByHundred}>+100</button>
-          <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={decreaseByHundred}>-100</button>
-          <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={increaseByTen}>+10</button>
-          <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={decreaseByTen}>-10</button>
-          <input type='submit' />
+    <div className='bg-blue-400 p-2 w-1/4 absolute right-1/2 translate-x-1/2'>
+        <h1>BidSubmition</h1>
+        <div className='bg-red-200 mb-5 p-2 rounded-md'>
+          <h1>{crop.name}</h1>
+          <p>variety : {crop.variety}</p>
+          <h1>status : {crop.status}</h1>
+        </div>
+        <form className='flex flex-col gap-4 bg-green-200 rounded-md p-2' onSubmit={handleSubmit}>
+          <h1 className='bg-black text-white p-2 rounded-md text-center'>INR {bid}</h1>
+          <div className='flex justify-between'>
+            <div className=''>
+              <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center mb-2' onClick={increaseByTen}>+10</button>
+              <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={increaseByHundred}>+100</button>
+            </div>
+            <div className=''>
+              <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center mb-2' onClick={decreaseByTen}>-10</button>
+              <button className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center' onClick={decreaseByHundred}>-100</button>
+            </div>
+          </div>
+          <input type='submit'
+                className='bg-green-600 w-16 rounded-md p-2 flex items-center justify-center cursor-pointer w-full'
+          />
         </form>
+        <div className=''>
+            <h1 className='bg-yellow-300 p-1 rounded-md mt-2'>total bids - {crop.bids && crop.bids.length}</h1>
+            {
+              crop.bids && crop.bids.map((b,id)=>(
+                <div key={id} className='flex justify-between bg-yellow-200 m-1 p-1 rounded-md'>
+                    <h1>{b.buyer.name}</h1>
+                    <h1>{b.bid}</h1>
+                </div>
+              ))
+            }
+        </div>
     </div>
   )
 }

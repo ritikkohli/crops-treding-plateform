@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const crops = [
     {
@@ -13,14 +14,16 @@ const crops = [
             'DBW-222',
             'PBW-771',
             'HD-3226'
-        ]
+        ],
+        msp: 2275
     },
     {
         name: 'rice',
         varieties: [
             'basmati',
             '1509'
-        ]
+        ],
+        msp: 1650
     },
     {
         name: 'corn',
@@ -28,7 +31,8 @@ const crops = [
             'GANGA-1',
             'GANGA-2',
             'D-765'
-        ]
+        ],
+        msp: 2090
     }
 ]
 
@@ -39,15 +43,18 @@ export default function AddCropForm() {
     const [variety, setVariety] = useState('');
     const [status, setStatus] = useState('');
     const [quantity, setQuantity] = useState(0);
+    const [msp, setMsp] = useState(0);
 
 
     const changeCropName = (e) =>{
         e.preventDefault();
         setName(e.target.value);
         if(e.target.value == ''){
-            setVarieties([])
+            setVarieties([]);
+            setMsp(0);
         }else{
             setVarieties(crops.find(c => c.name === e.target.value).varieties);
+            setMsp(crops.find(c => c.name === e.target.value).msp);
         }
         console.log(varieties)
     }
@@ -64,12 +71,14 @@ export default function AddCropForm() {
                     name,
                     variety,
                     status,
-                    quantity
+                    quantity,
+                    msp
                 })
             });
             if(res.ok){
                 const temp = await res.json();
                 console.log(temp);
+                toast.success('crop added')
             }else{
                 console.log('crop addition failed');
             }

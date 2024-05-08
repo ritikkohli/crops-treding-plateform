@@ -5,12 +5,12 @@ import Crop from "@/models/crops";
 
 export async function POST(req){
     try {
-        const {name, variety, status, quantity} = await req.json();
+        const {name, variety, status, quantity, msp} = await req.json();
         connectMongoDB();
 
         const userId = await getDataFromToken(req);
         console.log(userId);
-        await Crop.create({name, variety, status, quantity, farmer: userId});
+        await Crop.create({name, variety, status, quantity, msp, farmer: userId});
 
         return NextResponse.json({message: 'crop created'},{status: 201},{data:userId});
 
