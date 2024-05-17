@@ -10,7 +10,7 @@ const cropSchema = new Schema({
         type: String,
         required: true
     },
-    status:{
+    stage:{
         type: String,
         required: true
     },
@@ -22,10 +22,19 @@ const cropSchema = new Schema({
         type: Number,
         required: true
     },
+    image: {
+        type: String,
+        required: true
+    },
     farmer:{
         type: ObjectId,
         required: true,
         ref: "User"
+    },
+    isBidAccepted : {
+        type: Boolean,
+        required: true,
+        default: false
     },
     bids: [
         {
@@ -37,6 +46,10 @@ const cropSchema = new Schema({
             bid: {
                 type: Number,
                 required: true
+            },
+            isAccepted: {
+                type: Boolean,
+                default: false
             }
         }
     ]

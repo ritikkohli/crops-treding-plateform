@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
  
 export function middleware(request) {
     const path = request.nextUrl.pathname
@@ -24,6 +24,8 @@ export const config = {
     '/usertype',
     '/buyerRegister',
     '/farmerRegister',
-    '/addcrop'
+    '/addcrop',
+    '/farmerDash',
+    '/buyerDash'
   ]
 }

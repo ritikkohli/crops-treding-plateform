@@ -6,7 +6,7 @@ export async function GET(req){
     try {
         await connectMongoDB();
 
-        const crops = await Crop.find();
+        const crops = await Crop.find({isBidAccepted: false});
         console.log(crops);
         return NextResponse.json({data:crops});
     } catch (error) {

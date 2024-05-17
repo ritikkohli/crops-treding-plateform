@@ -15,7 +15,8 @@ const crops = [
             'PBW-771',
             'HD-3226'
         ],
-        msp: 2275
+        msp: 2275,
+        image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1389&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     {
         name: 'rice',
@@ -23,7 +24,8 @@ const crops = [
             'basmati',
             '1509'
         ],
-        msp: 1650
+        msp: 1650,
+        image: 'https://gonefarmers.com/cdn/shop/products/image_f6749f7f-9436-4b2d-bbd0-267fec6d9822_1024x1024@2x.jpg?v=1624422832'
     },
     {
         name: 'corn',
@@ -32,7 +34,8 @@ const crops = [
             'GANGA-2',
             'D-765'
         ],
-        msp: 2090
+        msp: 2090,
+        image: 'https://5.imimg.com/data5/FR/BR/MY-14085389/raw-maize-500x500.jpg'
     }
 ]
 
@@ -41,9 +44,10 @@ export default function AddCropForm() {
     const [name, setName] = useState('');
     const [varieties, setVarieties] = useState([]);
     const [variety, setVariety] = useState('');
-    const [status, setStatus] = useState('');
+    const [stage, setStage] = useState('');
     const [quantity, setQuantity] = useState(0);
     const [msp, setMsp] = useState(0);
+    const [image,setImage] = useState('');
 
 
     const changeCropName = (e) =>{
@@ -55,6 +59,7 @@ export default function AddCropForm() {
         }else{
             setVarieties(crops.find(c => c.name === e.target.value).varieties);
             setMsp(crops.find(c => c.name === e.target.value).msp);
+            setImage(crops.find(c => c.name === e.target.value).image);
         }
         console.log(varieties)
     }
@@ -70,15 +75,19 @@ export default function AddCropForm() {
                 body: JSON.stringify({
                     name,
                     variety,
-                    status,
+                    stage,
                     quantity,
-                    msp
-                })
+                    msp,
+                    image
+                },
+                { cache: 'no-store' })
             });
             if(res.ok){
                 const temp = await res.json();
                 console.log(temp);
-                toast.success('crop added')
+                toast.success('crop added');
+                const form = e.target;
+                form.reset();
             }else{
                 console.log('crop addition failed');
             }
@@ -117,9 +126,9 @@ export default function AddCropForm() {
 
                 <select
                     className='border border-2 rounded-md outline-0 p-2'
-                    onChange={(e)=>{setStatus(e.target.value)}}
+                    onChange={(e)=>{setStage(e.target.value)}}
                 >
-                    <option value="">Select status</option>
+                    <option value="">Select stage</option>
                     <option value="growing">growing</option>
                     <option value="ripe">ripe</option>
                     <option value="harvested">harvested</option>

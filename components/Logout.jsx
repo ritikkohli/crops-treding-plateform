@@ -10,9 +10,9 @@ export default function Logout() {
   const logout = async ()=>{
     try {
       await fetch('/api/users/logout');
-      router.push('/');
-      toast.success('Logout successfully');
-      router.refresh();
+      await router.replace('/');
+      // toast.success('Logout successfully');
+      await router.refresh();
     } catch (error) {
       console.log('logout failed', error);
     }
