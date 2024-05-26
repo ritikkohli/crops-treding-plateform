@@ -7,7 +7,7 @@ export async function GET(req){
     try {
         await connectMongoDB();
         const userId = await getDataFromToken(req);
-        const data = await Crop.find({"bids.buyer":userId,isBidAccepted}).populate('farmer');
+        const data = await Crop.find({"bids.buyer":userId,isBidAccepted:false}).populate('farmer');
         return NextResponse.json({data:data,userId});
     } catch (error) {
         return NextResponse.json({error:error.message})

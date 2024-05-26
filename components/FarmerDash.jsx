@@ -25,10 +25,8 @@ export default function FarmerDash() {
 
 
   return (
-    <div className='flex flex-col items-center'>
-      <h1 className='m-2'>Farmer dash - bids</h1>
-
-      <div className='h-9 w-1/3 bg-gray-200 rounded-lg p-1 flex justify-between'>
+    <div className='flex flex-col items-center py-5 gap-2'>
+      <div className='h-9 sm:w-1/3 bg-gray-200 rounded-lg p-1 flex justify-between w-5/6'>
         <div 
           className='w-2/5 h-full rounded-lg cursor-pointer p-1 flex justify-center items-center'
           style={{backgroundColor: isActiveOne ? 'white' : 'transparent'}}
@@ -42,7 +40,7 @@ export default function FarmerDash() {
         >accepted</div>
       </div>
 
-      <div className='w-full h-min bg-green-300'>
+      <div className='w-full h-min'>
           {activeComponent}
       </div>
     </div>

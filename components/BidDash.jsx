@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState , useEffect} from 'react';
+import Link from 'next/link';
 
 export default function BidDash() {
     const [crops, setCrops] = useState([]);
@@ -48,11 +49,14 @@ export default function BidDash() {
     },[])
 
   return (
-    <div className='bg-red-400 p-2 px-5'>
-        <div className='flex gap-5 flex-wrap'>
+    <div className='px-5'>
+        <div className='m-1 flex justify-end'>
+            <Link className='bg-gray-400 rounded-lg p-1' href={'addcrop'}>add +</Link>
+        </div>
+        <div className='flex gap-5 flex-wrap flex-col items-center'>
             {
                 crops.map((c,id)=>(
-                    <div className='w-1/3 bg-green-200 rounded-md p-3 flex flex-col gap-2' key={id}>
+                    <div className='w-5/6 sm:w-1/3 bg-green-300 rounded-md p-3 flex flex-col gap-2' key={id}>
                             <img
                                 className='rounded-md'
                                 src={c.image} 

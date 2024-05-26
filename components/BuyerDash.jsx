@@ -9,7 +9,7 @@ export default function BuyerDash() {
   const [isActiveOne, setIsActiveOne] = useState(true);
   const [isActiveTwo,setIsActiveTwo] = useState(false);
   const [isActiveThree,setIsActiveThree] = useState(false);
-  const [activeComponent, setActiveComponent] = useState(<PendingBids/>);
+  const [activeComponent, setActiveComponent] = useState(<CropsDash/>);
 
 
   const handleClickOne = () => {
@@ -34,10 +34,8 @@ export default function BuyerDash() {
   }
 
   return (
-    <div className='flex flex-col items-center'>
-      <h1 className='m-2'>BuyerDash - bids</h1>
-
-      <div className='h-9 w-1/3 bg-gray-200 rounded-lg p-1 flex justify-between'>
+    <div className='flex flex-col items-center gap-2 py-5'>
+      <div className='h-9 sm:w-1/3 bg-gray-200 rounded-lg p-1 flex justify-between w-5/6'>
         <div 
           className='w-2/5 h-full rounded-lg cursor-pointer p-1 flex justify-center items-center'
           style={{backgroundColor: isActiveOne ? 'white' : 'transparent'}}
@@ -57,7 +55,7 @@ export default function BuyerDash() {
         >accepted</div>
       </div>
 
-      <div className='w-full h-min bg-green-300'>
+      <div className='w-full h-min'>
           {activeComponent}
       </div>
     </div>

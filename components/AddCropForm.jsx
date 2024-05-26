@@ -98,7 +98,8 @@ export default function AddCropForm() {
     }
 
     return (
-        <div className='bg-green-200 p-2 absolute right-1/2 translate-x-1/2 w-1/4'>
+        <div className='bg-green-200 p-2 absolute right-1/2 m-2 translate-x-1/2 sm:w-1/4 w-5/6 rounded-lg h-5/6'>
+            <h1 className='text-center mb-3'>add a crop</h1>
             <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
                 <select 
                     className='border border-2 rounded-md outline-0 p-2'

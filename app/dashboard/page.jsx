@@ -1,6 +1,5 @@
 'use client';
 
-import CropsDash from '@/components/CropsDash';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -30,8 +29,7 @@ export default function Dashboard() {
 
   return (
     <div className=''>
-      <h1>dash</h1>
-        {/* <CropsDash/> */}
+      <h1>wait a minute</h1>
     </div>
   )
 }

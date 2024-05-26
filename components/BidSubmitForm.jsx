@@ -97,12 +97,12 @@ export default function BidSubmitForm(props) {
 
   if(crop){
     return (
-      <div className='bg-blue-400 p-2 w-1/4 absolute right-1/2 translate-x-1/2'>
-          <h1>BidSubmition</h1>
+      <div className='bg-blue-400 p-2 sm:w-1/4 absolute right-1/2 translate-x-1/2 w-5/6 rounded-lg mt-2'>
+          <h1 className='text-center'>BidSubmition</h1>
           <div className='bg-red-200 mb-5 p-2 rounded-md'>
             <h1>{crop.name}</h1>
             <p>variety : {crop.variety}</p>
-            <h1>status : {crop.status}</h1>
+            <h1>stage : {crop.stage}</h1>
           </div>
           <form className='flex flex-col gap-4 bg-green-200 rounded-md p-2' onSubmit={handleSubmit}>
             <h1 className='bg-black text-white p-2 rounded-md text-center'>INR {bid}</h1>

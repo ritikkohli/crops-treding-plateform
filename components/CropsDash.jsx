@@ -23,12 +23,10 @@ export default function CropsDash() {
     },[])
 
   return (
-    <div>
-        <h1>crops listing here . . .</h1>
-        <div className='flex gap-4 mx-10 '>
+        <div className='flex flex-col sm:flex-row items-center gap-4 my-4'>
             {
                 crop.map((c,id)=>(
-                    <div className='w-48 h-26 bg-green-200 rounded-md p-3 cursor-pointer flex flex-col gap-2' key={id}>
+                    <div className='sm:w-48 w-4/6 h-26 bg-green-300 rounded-md p-3 cursor-pointer flex flex-col gap-2' key={id}>
                         <img
                             className='rounded-md h-full w-full'
                             src={c.image} 
@@ -41,6 +39,5 @@ export default function CropsDash() {
                 ))
             }
         </div>
-    </div>
   )
 }

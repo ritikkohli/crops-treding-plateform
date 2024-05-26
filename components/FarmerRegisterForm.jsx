@@ -3,6 +3,7 @@
 import React, {useState } from 'react'
 import {useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 export default function page() {
   const [name, setName] = useState('');
@@ -325,10 +326,10 @@ export default function page() {
   }
 
   return (
-    <div className='w-1/4 bg-blue-300 p-2 absolute right-1/2 translate-x-1/2'>
+    <div className='sm:w-1/4 bg-green-300 p-2 absolute right-1/2 translate-x-1/2 w-5/6 rounded-lg mt-2'>
         <h1>{}</h1>
-        <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
-            <h1 className=''>Signup</h1>
+        <form className='flex flex-col gap-5 mb-4' onSubmit={handleSubmit}>
+            <h1 className='text-center'>Signup</h1>
             <input
               type='text'
               onChange={(e)=>setName(e.target.value)} 
@@ -345,9 +346,8 @@ export default function page() {
               type='tel' 
               onChange={(e)=>setMobile(e.target.value)}
               placeholder='mobile' 
-              className='border border-2 rounded-md outline-0 p-2 '
+              className='border border-2 rounded-md outline-0 p-2'
             />
-            {/* <input type='text' placeholder='otp' className='border border-2 rounded-md outline-0 p-2 '/> */}
             <input 
               type='password' 
               onChange={(e)=>setPassword(e.target.value)} 
@@ -389,6 +389,7 @@ export default function page() {
               className='cursor-pointer border border-2 rounded-md outline-0 p-2 '
             />
         </form>
+      <Link className='text-blue-600' href={'/login'}>Have an account ?</Link>
     </div>
   )
 }

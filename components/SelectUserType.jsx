@@ -21,7 +21,7 @@ export default function SelectUserType() {
   }
 
   return (
-    <div className='flex flex-col gap-3 w-1/4 absolute right-1/2 top-1/4 translate-x-1/2'>
+    <div className='flex flex-col gap-3 sm:w-1/4 absolute right-1/2 top-1/4 translate-x-1/2 w-full'>
         <button
             onClick={handleClickOne}
             className='bg-green-500 rounded-lg px-4 py-2 text-white text-xl font-bold'

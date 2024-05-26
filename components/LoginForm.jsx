@@ -3,6 +3,7 @@
 import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import Link from 'next/link';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -47,8 +48,8 @@ export default function LoginForm() {
 
 
   return (
-    <div className='w-1/4 bg-blue-300 p-2 absolute right-1/2 translate-x-1/2'>
-    <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
+    <div className='sm:w-1/4 h-5/6 rounded-lg bg-green-300 p-2 absolute right-1/2 translate-x-1/2 mt-2 w-5/6'>
+    <form className='flex flex-col gap-5 mb-4 sm:w-full' onSubmit={handleSubmit}>
         <h1>Login</h1>
         <input 
           type='email' 
@@ -69,6 +70,10 @@ export default function LoginForm() {
           className='border border-2 rounded-md outline-0 p-2 cursor-pointer'
         />
     </form>
+    <div className='flex flex-col gap-3'>
+      <Link className='text-blue-600' href={'/usertype'}>create account ?</Link>
+      <Link className='text-blue-600' href={'/login'}>forgot password ?</Link>
+    </div>
 </div>
   )
 }

@@ -1,3 +1,5 @@
+// 
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -26,19 +28,16 @@ export default function PendingBids() {
 
     return (
         <div>
-            PendingBids
             {
                 crops.map((c,id)=>(
-                    <div className='' key={id}>
-                        <h1>{c.name}</h1>
-                        <h1>{c.farmer.name}</h1>
-                        <h1>{c.farmer.mobile}</h1>
-                        <h1 className='bg-blue-200 w-min'>{user}</h1>
+                    <div className='border border-1 bg-green-300 cursor-pointer p-1 hover:bg-green-400' key={id}>
+                        <h1>crop - {c.name}</h1>
+                        <h1>farmer - {c.farmer.name}</h1>
+                        <h1>contact - {c.farmer.mobile}</h1>
 
                         {c.bids.filter(obj=>obj.buyer === user).map((b,id)=>(
                             <div className='' key={id}>
-                                <h1>{b.buyer} {b.bid}</h1>
-
+                                <h1>amount - INR {b.bid}</h1>
                             </div>
                         ))}
                     </div>
