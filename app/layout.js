@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Navbar} from "../components/Navbar.js";
+import {Navbar} from "../components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
 import 'remixicon/fonts/remixicon.css'
 
