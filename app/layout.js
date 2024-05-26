@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import {Navbar} from "../components/Navbar.jsx";
 import { Toaster } from "react-hot-toast";
 import 'remixicon/fonts/remixicon.css'
+import Navbar from "@/components/Navbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
