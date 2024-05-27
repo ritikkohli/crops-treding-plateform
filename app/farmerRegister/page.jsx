@@ -1,6 +1,6 @@
 import FarmerRegisterForm from '@/components/FarmerRegisterForm'
 
-export default function page() {
+export default function Farmerregister() {
 
   return <FarmerRegisterForm/>;
 }

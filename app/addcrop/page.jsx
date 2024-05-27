@@ -4,8 +4,7 @@ import AddCropForm from '@/components/AddCropForm';
 import { useEffect, useState } from 'react';
 
 
-
-export default function page() {
+export default function Addcrop() {
   const [isFarmer, setIsFarmer]  = useState(false);
 
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import FarmerDash from '@/components/FarmerDash';
 
-export default function page() {
+export default function Farmerdash() {
   const [isFarmer, setIsFarmer]  = useState(false);
 
   const getUserType = async () => {

@@ -3,7 +3,7 @@
 import BuyerDash from '@/components/BuyerDash';
 import { useEffect, useState } from 'react';
 
-export default function page() {
+export default function Buyerdash() {
   const [isFarmer, setIsFarmer]  = useState(false);
 
 

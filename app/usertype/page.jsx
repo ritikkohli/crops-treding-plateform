@@ -1,6 +1,6 @@
 import React from 'react';
 import SelectUserType from '@/components/SelectUserType';
 
-export default function page() {
+export default function Usertype() {
   return <SelectUserType/>
 }
