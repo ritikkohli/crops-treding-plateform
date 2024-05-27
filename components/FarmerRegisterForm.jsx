@@ -5,7 +5,7 @@ import {useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import Link from 'next/link';
 
-export default function page() {
+export default function FarmerRegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');

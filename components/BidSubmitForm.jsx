@@ -93,7 +93,7 @@ export default function BidSubmitForm(props) {
 
   useEffect(()=>{
     getData();
-  },[])
+  },[getData])
 
   if(crop){
     return (

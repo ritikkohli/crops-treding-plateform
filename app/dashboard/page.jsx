@@ -25,7 +25,7 @@ export default function Dashboard() {
 
   useEffect(()=>{
     getUserType();
-  },[])
+  },[getUserType])
 
   return (
     <div className=''>

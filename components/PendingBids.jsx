@@ -24,7 +24,7 @@ export default function PendingBids() {
 
     useEffect(()=>{
         getData();
-    },[])
+    },[getData])
 
     return (
         <div>

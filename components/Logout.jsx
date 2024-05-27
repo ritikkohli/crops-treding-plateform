@@ -20,7 +20,7 @@ export default function Logout() {
 
   useEffect(()=>{
     logout();
-  },[]);
+  },[logout]);
 
   return (
     <div className="grid place-items-center h-screen">

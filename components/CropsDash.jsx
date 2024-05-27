@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function CropsDash() {
     const [crop, setCrop] = useState([]);
@@ -27,7 +28,7 @@ export default function CropsDash() {
             {
                 crop.map((c,id)=>(
                     <div className='sm:w-48 w-4/6 h-26 bg-green-300 rounded-md p-3 cursor-pointer flex flex-col gap-2' key={id}>
-                        <img
+                        <Image
                             className='rounded-md h-full w-full'
                             src={c.image} 
                         />

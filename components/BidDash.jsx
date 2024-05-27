@@ -2,6 +2,7 @@
 
 import React, { useState , useEffect} from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function BidDash() {
     const [crops, setCrops] = useState([]);
@@ -57,7 +58,7 @@ export default function BidDash() {
             {
                 crops.map((c,id)=>(
                     <div className='w-5/6 sm:w-1/3 bg-green-300 rounded-md p-3 flex flex-col gap-2' key={id}>
-                            <img
+                            <Image
                                 className='rounded-md'
                                 src={c.image} 
                             />
