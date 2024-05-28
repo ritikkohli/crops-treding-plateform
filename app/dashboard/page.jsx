@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Dashboard() {
 
@@ -9,14 +10,14 @@ export default function Dashboard() {
 
   const getUserType = async () => {
     try {
-      const res = await fetch('api/users/usertype');
-      const {user} = await res.json();
-      const {isFarmer} = user;
-      if(isFarmer){
-        router.push('/farmerDash');
-      }else{
-        router.push('/buyerDash');
-      }
+      // const res = await fetch('api/users/usertype');
+      // const {user} = await res.json();
+      // const {isFarmer} = user;
+      // if(isFarmer){
+        // router.push('/farmerDash');
+      // }else{
+        // router.push('/buyerDash');
+      // }
       console.log('ok',isFarmer);
     } catch (error) {
       console.log(error);
@@ -30,6 +31,8 @@ export default function Dashboard() {
   return (
     <div className=''>
       <h1>wait a minute</h1>
+      <Link href={'/buyerDash'}>buyer</Link>
+      <Link href={'/farmerDash'}>farmer</Link>
     </div>
   )
 }
