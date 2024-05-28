@@ -72,19 +72,7 @@ export default function BidSubmitForm(props) {
     }
   }
 
-  const getData = async (e) => {
-
-    try {
-      const cropInfo = await fetch(`/api/crops/getCrops/${props.crop}`);
-      const {data} = await cropInfo.json();
-      console.log(data);
-      setCrop(data);
-      setBid(data.msp);
-      setMsp(data.msp);
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  
 
   const handleClick = () => {
     setRotate(rotate + 180);
@@ -92,8 +80,21 @@ export default function BidSubmitForm(props) {
   }
 
   useEffect(()=>{
+    const getData = async (e) => {
+
+      try {
+        const cropInfo = await fetch(`/api/crops/getCrops/${props.crop}`);
+        const {data} = await cropInfo.json();
+        console.log(data);
+        setCrop(data);
+        setBid(data.msp);
+        setMsp(data.msp);
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getData();
-  },[getData])
+  },[])
 
   if(crop){
     return (
