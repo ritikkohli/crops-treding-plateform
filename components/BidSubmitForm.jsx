@@ -86,9 +86,11 @@ export default function BidSubmitForm(props) {
         const cropInfo = await fetch(`/api/crops/getCrops/${props.crop}`);
         const {data} = await cropInfo.json();
         console.log(data);
-        setCrop(data);
-        setBid(data.msp);
-        setMsp(data.msp);
+        if(data){
+          setCrop(data);
+          setBid(data.msp);
+          setMsp(data.msp);
+        }
       } catch (error) {
         console.log(error)
       }
