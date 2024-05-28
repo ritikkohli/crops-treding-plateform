@@ -28,7 +28,7 @@ export const config = {
     '/farmerDash',
     '/buyerDash',
     '/bidDash',
-    'bidsubmit',
-    'logout'
+    '/bidsubmit',
+    '/logout'
   ]
 }
