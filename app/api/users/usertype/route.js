@@ -1,6 +1,6 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/users";
-import { NextResponse,NextResponse } from "next/server";
+import { NextRequest,NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 export async function GET(req){
