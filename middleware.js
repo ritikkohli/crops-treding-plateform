@@ -26,6 +26,9 @@ export const config = {
     '/farmerRegister',
     '/addcrop',
     '/farmerDash',
-    '/buyerDash'
+    '/buyerDash',
+    '/bidDash',
+    'bidsubmit',
+    'logout'
   ]
 }
