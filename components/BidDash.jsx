@@ -32,20 +32,19 @@ export default function BidDash() {
         }
     }
 
-    const getData = async (e) => {
-        try {
-            const res = await fetch('api/crops/getMyCrops');
-            const {data} = await res.json();
-            if(data){
-                setCrops(data);
-            }
-            console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(()=>{
+        const getData = async (e) => {
+            try {
+                const res = await fetch('api/crops/getMyCrops');
+                const {data} = await res.json();
+                if(data){
+                    setCrops(data);
+                }
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
         getData();
     },[])
 

@@ -1,4 +1,3 @@
-// 
 
 'use client';
 
@@ -8,23 +7,22 @@ export default function PendingBids() {
     const [crops, setCrops] = useState([]);
     const [user,setUser] = useState('');
 
-    const getData = async () => {
-        try {
-            const res = await fetch('api/bids/myBids');
-            const {data,userId} = await res.json();
-            if(data){
-                setCrops(data);
-            }
-            console.log(data,userId);
-            setUser(userId)
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(()=>{
+        const getData = async () => {
+            try {
+                const res = await fetch('api/bids/myBids');
+                const {data,userId} = await res.json();
+                if(data){
+                    setCrops(data);
+                }
+                console.log(data,userId);
+                setUser(userId)
+            } catch (error) {
+                console.log(error);
+            }
+        }
         getData();
-    },[getData])
+    },[])
 
     return (
         <div>

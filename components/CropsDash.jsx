@@ -7,19 +7,22 @@ import Image from 'next/image';
 export default function CropsDash() {
     const [crop, setCrop] = useState([]);
 
-    const getData = async (e) => {
-
-        const res = await fetch('api/crops/getCrops',{ cache: 'no-store' });
-        const {data} = await res.json();
-
-        if(data){
-            setCrop(data);
-        }
-
-        console.log(data);
-    }
-
     useEffect(()=>{
+        const getData = async (e) => {
+            try{
+                const res = await fetch('api/crops/getCrops',{ cache: 'no-store' });
+                const {data} = await res.json();
+        
+                if(data){
+                    setCrop(data);
+                }
+        
+                console.log(data);
+            }
+            catch (error){
+                console.log(error);
+            }
+        }
         getData();
     },[])
 
