@@ -32,10 +32,17 @@ export default function LoginForm() {
       })
       
       if(res.ok){
+        const data = await res.json();
         const form = e.target;
         form.reset();
         toast.success('Login successfull');
-        router.push('/dashboard');
+        console.log(data.data.isFarmer)
+        if(data.data.isFarmer){
+          router.push('/farmerDash');
+        }
+        else{
+          router.push('/buyerDash');
+        }
         router.refresh();
       }else{
         console.log('User login failed')

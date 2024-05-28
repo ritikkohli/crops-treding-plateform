@@ -60,7 +60,9 @@ export default function BidDash() {
                     <div className='w-5/6 sm:w-1/3 bg-green-300 rounded-md p-3 flex flex-col gap-2' key={id}>
                             <Image
                                 className='rounded-md'
-                                src={c.image} 
+                                src={`/${c.name}.jpg`}
+                                width={400}
+                                height={400}
                             />
                             <h1>{c.name} ({c.variety})</h1>
                             <p>{c.quantity} kg</p>

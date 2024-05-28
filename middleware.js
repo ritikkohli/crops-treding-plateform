@@ -19,7 +19,6 @@ export function middleware(request) {
 export const config = {
   matcher: [
     '/',
-    '/dashboard',
     '/login',
     '/usertype',
     '/buyerRegister',
@@ -27,7 +26,6 @@ export const config = {
     '/addcrop',
     '/farmerDash',
     '/buyerDash',
-    '/bidDash',
     '/bidsubmit',
     '/logout'
   ]

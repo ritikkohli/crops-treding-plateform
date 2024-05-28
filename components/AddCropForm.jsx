@@ -16,7 +16,7 @@ const crops = [
             'HD-3226'
         ],
         msp: 2275,
-        image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=1389&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        image: 'wheat.jpg'
     },
     {
         name: 'rice',
@@ -25,7 +25,7 @@ const crops = [
             '1509'
         ],
         msp: 1650,
-        image: 'https://gonefarmers.com/cdn/shop/products/image_f6749f7f-9436-4b2d-bbd0-267fec6d9822_1024x1024@2x.jpg?v=1624422832'
+        image: 'rice.jpg'
     },
     {
         name: 'corn',
@@ -35,7 +35,7 @@ const crops = [
             'D-765'
         ],
         msp: 2090,
-        image: 'https://5.imimg.com/data5/FR/BR/MY-14085389/raw-maize-500x500.jpg'
+        image: 'corn.jpg'
     }
 ]
 
